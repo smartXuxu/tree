@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>商品详情</title>
+    <link rel="stylesheet" href="../css/mui.min.css"/>
+    <link rel="stylesheet" href="../css/mui_img.css"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/local_market_goodlist_detail.css"/>
+    <style>
+        .mui-slider .mui-slider-group .mui-slider-item img{
+            position: absolute;
+            top:40%;
+        }
+        .mui-slider .mui-slider-group .mui-slider-item>a:not(.mui-control-item){
+            width: 100%;
+            min-height: 7rem;
+            max-height: 7.5rem;
+        }
+        .mui-slider .mui-slider-group .mui-slider-item a img{
+            width: 100%;
+            min-height: 7rem;
+            max-height: 7.5rem;
+        }
+        .goodsNumber{
+            line-height: 1rem;
+            font-size: 0.32rem ;
+        }
+        .p_info .img_box{
+            margin-top: 0.2rem;
+            width: 33%;
+            height: 2.5rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            background-color: #333;
+        }
+        .p_info .img_box img{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .no_comment{
+            font-size: 0.32rem;
+            padding: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="layer">
+    <!--填充-->
+  <!--  <header>
+        <i onclick="back()"></i>
+     &lt;!&ndash;   <del></del>&ndash;&gt;
+    </header>
+    &lt;!&ndash;商品 轮播图&ndash;&gt;
+    <div id="slider" class="mui-slider" >
+        <div class="mui-slider-group">
+            <div class="mui-slider-item"><a href="#"><img src="../img/focus-img1.png"  data-preview-src="" data-preview-group="1"/></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="../img/focus-img1.png" data-preview-src="" data-preview-group="1" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="../img/focus-img1.png" data-preview-src="" data-preview-group="1"/></a></div>
+        </div>
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+        </div>
+    </div>
+    <div class="goods_info">
+        <p class="introduce">韩式田园吸顶灯马卡龙客厅灯韩式田园吸顶灯马卡龙客厅灯韩式田园吸顶灯马卡龙客厅灯韩式田园吸顶灯马卡龙客厅灯现代简约卧室儿童餐 厅大气家用灯具</p>
+       <div class="price">
+           <i>￥2169</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>会员价: ￥1203</em>
+       </div>
+        <div class="style">
+            <ul>
+                <li>快递：0.00</li>
+                <li>月销：1250</li>
+                <li>河南郑州</li>
+            </ul>
+        </div>
+    </div>
+    <div class="goods_shop" onclick="location.href='./local_market_shop.html'">
+        <img src="../img/focus-img1.png" alt=""/>
+        <div class="center">
+            <span>陌上浅笑</span>
+            <em>发布宝贝：2</em>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <div class="goods_comment">
+        <div class="header">
+           <span>商品评价</span>
+            <i></i>
+        </div>
+        <div class="goods_comment_list">
+           <div class="goods_list_header">
+               <img src="../img/focus-img1.png" alt=""/>
+               <em>时***</em>
+               <del>8月27日  17:11</del>
+           </div>
+            <div class="p_info">
+               <p>宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！</p>
+                <img src="../img/focus-img1.png" alt="" data-preview-src="" data-preview-group="2"/>
+            </div>
+        </div>
+        <button class="all_comment" onclick="location.href='./local_market_goodList_detail_comment.html'">查看全部评价</button>
+    </div>
+    <div class="goodS_detail">
+        <p>商品详情</p>
+        <img src="../img/focus-img1.png" data-preview-src="" data-preview-group="3"  alt=""/>
+    </div>
+    <div class="footer">
+        <ul>
+            <li><em></em><i>收藏</i></li>
+            <li onclick="location.href='local_market_shop.html'"><em></em><i>店铺</i></li>
+            <li><em></em><i>分享</i></li>
+        </ul>
+        <button class="right_buy" onclick="location.href='./local_market_business_buy_goods.html'">立即购买</button>
+    </div>-->
+
+</div>
+</body>
+<script src="../js/x_rem.js"></script>
+
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.zoom.js"></script>
+<script src="../js/mui.preview.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/back.js"></script>
+<script src="../js/template-web.js"></script>
+<script src="../js/template.js"></script>
+<script id="goodList_detail" type="text/html">
+   {{each list as value i}}
+   <header>
+       <i onclick="back()"></i>
+       <!--   <del></del>-->
+   </header>
+   <!--商品 轮播图-->
+   <div id="slider" class="mui-slider" >
+       <div class="mui-slider-group">
+           {{if value.goods.images.length==0}}
+           <div class="mui-slider-item">
+               <a href="#">
+                   <img src="../img/no_photo.png"  data-preview-src="" data-preview-group="1"/>
+               </a>
+           </div>
+           {{else}}
+           {{each value.goods.images as img j}}
+           <div class="mui-slider-item">
+               <a href="#">
+                   <img src="{{img.path}}"  data-preview-src="" data-preview-group="{{i}}"/>
+               </a>
+           </div>
+           {{/each}}
+           {{/if}}
+
+       </div>
+       <div class="mui-slider-indicator">
+           {{each value.goods.images as img j}}
+           <div class="mui-indicator {{j==0?'mui-active':''}} "></div>
+           {{/each}}
+       </div>
+   </div>
+   <div class="goods_info">
+       <p class="introduce">{{value.goods.goodsName}}</p>
+       <div class="price">
+           <i>￥{{value.goods.smallPrice==null?value.goods.price:value.goods.smallPrice}}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>原价: ￥{{value.goods.price==null?value.goods.smallPrice:value.goods.price}}</em>
+       </div>
+       <div class="style">
+           <ul>
+               <li>快递：￥{{value.goods.expressFee==null?0:value.goods.expressFee}}</li>
+               <li>月销：{{value.goods.saleNumber==null?0:value.goods.saleNumber}}</li>
+               <li>库存：{{value.goods.goodsNumber==null?1:value.goods.goodsNumber}}件
+                   </li>
+
+           </ul>
+
+       </div>
+       <p class="goodsNumber">地址：{{value.goods.address==null||value.goods.address=="位置"?"同城":value.goods.address}}</p>
+   </div>
+   <!--<div class="goods_shop" onclick="location.href='./local_market_shop.html'">
+       <img src="{{value.user.avatar}}" alt=""/>
+       <div class="center">
+           <span>{{value.user.userName}}</span>
+           &lt;!&ndash;<em>发布宝贝：2</em>&ndash;&gt;
+       </div>
+       <div class="right">
+       </div>
+   </div>-->
+   {{/each}}
+
+   {{if Comment.length==0}}
+   <div class="goods_comment">
+       <div class="header">
+           <span>商品评价</span>
+           <i></i>
+       </div>
+   <div class="no_comment">
+       暂时没有任何评价喔！
+   </div>
+       </div>
+   {{else}}
+   <div class="goods_comment">
+       <div class="header">
+           <span>商品评价</span>
+           <i class="all_comment all_i"></i>
+       </div>
+
+       <div class="goods_comment_list">
+           <div class="goods_list_header">
+               <img src="{{Comment[0].toUser.avatar}}" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;
+               <em>{{Comment[0].toUser.userName.substr(0,1)}}***</em>
+               <del>{{time(Comment[0].time)}}</del>
+           </div>
+           <div class="p_info">
+               <p>{{Comment[0].body}}</p>
+               {{if Comment[0].img==null}}
+
+               {{else}}
+               {{each str(Comment[0].img) as img j }}
+               <div class="img_box">
+                   <img src="{{img}}" alt="" data-preview-src="" data-preview-group="3"/>
+               </div>
+
+               {{/each}}
+               {{/if}}
+
+           </div>
+       </div>
+       <button class="all_comment" >查看全部评价</button>
+   </div>
+   {{/if}}
+
+   <div class="goodS_detail">
+       <p>商品详情</p>
+       {{each list as value i}}
+       {{if value.goods.images.length==0}}
+       <img src="../img/no_photo.png" alt="" data-preview-src="" data-preview-group="2"/>
+       {{else}}
+       {{each value.goods.images as img j}}
+       <img src="{{img.path}}" data-preview-src="" data-preview-group="{{i-0+1}}"  alt=""/>
+       {{/each}}
+       {{/if}}
+
+       {{/each}}
+   </div>
+   {{each list as value i}}
+   <div class="footer">
+       <ul>
+           <li class="save" data-id="{{value.goods.goodsId}}"><em></em><i>收藏</i></li>
+           <!--<li onclick="location.href='local_market_shop.html'"><em></em><i>店铺</i></li>-->
+          <!-- <li><em></em><i>分享</i></li>-->
+       </ul>
+       <button class="right_buy" onclick="location.href='./local_market_business_buy_goods.html?goodsId={{value.goods.goodsId}}'">立即购买</button>
+   </div>
+{{/each}}
+</script>
+<script>
+    $(function(){
+        mui.previewImage();
+        // a链接问题
+// 监听tap事件，解决 a标签 不能跳转页面问题
+        mui('body').on('tap','a',function(){document.location.href=this.href;});
+        var goodsId=location.href.split("=")[1];
+        //console.log(goodsId);
+        function render(){
+           $.ajax({
+               //处理session每次不唯一问题
+               xhrFields: {
+                   withCredentials: true
+               },
+               type: "post",
+               async:false,
+               url: baseUrl+"/goods/getOneGoods",
+               data:{
+                   goodsId:goodsId
+               },
+               dataType: 'json',
+               success:function(data) {
+                   console.log(data);
+                   if(data.state==true){
+                       template.helper("time",function(date){
+                           var time=new Date(date).toLocaleString().replace(/:\d{1,2}$/,' ').substr(5,11).replace("/","-");
+                           return time;
+                           /* return new Date(parseInt(date) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');*/
+                       });
+                       template.helper("str",function(str){
+                           return str.split(",");
+                       });
+                    var html=template("goodList_detail",data);
+                       $(".layer").html(html);
+                       //自动轮播
+                       //获得slider插件对象
+                       var gallery = mui('.mui-slider');
+                       gallery.slider({
+                           interval:0//自动轮播周期，若为0则不自动播放，默认为0；
+                       });
+                   }
+               }
+           })
+       }
+        render();
+        //添加收藏
+        //收藏商品/goods/collectGoods
+        var falg =true;
+        $(".save").click(function(){
+            var goodsId=$(this).data("id");
+            console.log(goodsId);
+            if(falg){
+                $.ajax({
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    async: false,
+                    type: "post",
+                    dataType: "json",
+                    url: baseUrl + "/goods/collectGoods",
+                    data: {
+                        goodsId: goodsId
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code=="success"){
+                            $(".save>i").text("已收藏");
+                        }
+                    }
+                })
+                falg=false;
+            }else{
+                $.ajax({
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    async: false,
+                    type: "post",
+                    dataType: "json",
+                    url: baseUrl + "/goods/deleteCollectGoods",
+                    data: {
+                        goodsId: goodsId
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code=="success"){
+                            $(".save>i").text("已取消");
+                        }
+                    }
+                })
+                falg=true;
+            }
+        })
+        $(".all_comment").click(function () {
+            location.href='./local_market_goodList_detail_comment.html?url='+goodsId;
+
+        })
+        })
+</script>
+
+</html>

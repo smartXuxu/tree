@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <title>搜索职位</title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/mui.min.css"/>
+    <link rel="stylesheet" href="../css/mui.indexedlist.css"/>
+
+
+    <style>
+        .btnout{
+            display: inline-block;
+        }
+        body{
+            background-color: #fff;
+        }
+             h5{
+            color:#333;
+            padding-left: 0.5rem;
+        }
+
+        .location .guild{position: absolute;
+            z-index: 9; top: 0rem; width: 100%; height: auto;padding: 0 20px 0 10px;}
+        .place_ac{padding:0 23px 10px 10px;}
+        .location .guild h5{line-height: 30px;padding-top: 10px;}
+        .location .guild .btnout{width: 25%;float: left;padding: 0 10px;margin: 10px 0;}
+        .location .guild .btnout button{width: 100%;}
+       
+        .mui-btn-outlined{
+            border:none ;
+            color:#545458;
+            background-color : #f4f4f4;
+            margin-top: 0.3rem;
+            margin-right: 0.3rem;
+        }
+        .mui-search input[type=search] {
+            width: 80%;
+            position: relative;
+            left: 3rem;
+        }
+        header{
+            height: 2rem;
+            padding-top: 0.8rem;
+            background-color: #fff;
+            position: relative;
+            /*margin-bottom: 0.5rem;*/
+        }
+        header em{
+            display: inline-block;
+            background: url("../img/left.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            position: relative;
+            left: 3%;
+            width: 0.6rem;
+            height: 0.9rem;
+        }
+        header .search_job{
+            position: absolute;
+            left: 1rem;
+            width: 70%;
+            border-radius: 5px;
+            background-color: #f3f3f2;
+            border: none;
+            font-size: 0.36rem;
+            text-indent: 2em;
+        }
+        header:before{
+            content: "";
+            width: 0.6rem;
+            height: 100%;
+            position: absolute;
+            left: 17%;
+            top: 14%;
+            background: url("../img/search_03.png") no-repeat center;
+            -webkit-background-size: 120%;
+            background-size: 120%;
+            z-index: 1;
+        }
+        .search{
+            position: absolute;
+            right:0%;
+            font-size: 0.36rem;
+            color:#545458;
+            padding: 0.3rem;
+        }
+        .content{
+            padding: 0.3rem;
+        }
+        .content li{
+            border-bottom: 1px solid #eeeeee;
+        }
+        .content li .header {
+            position: relative;
+            height: 0.9rem;
+            line-height: 0.9rem;
+        }
+        .header>span{
+            height: 1rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            word-break: break-all;
+        }
+        .header>i{
+            position: absolute;
+            right: 3%;
+            top: 38%;
+            color:red;
+        }
+        .content li .center em i, .content li .center del s {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: url("../img/point%20(2).png")no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            display: inline-block;
+            vertical-align: middle
+        }
+        .content li .center del s {
+            background-image: url("../img/time.png");
+        }
+        content li .center {
+            position: relative;
+            font-size: 0.2rem;
+            color: #a1a0a1;
+            height: 0.5rem;
+        }
+       .content li .footer em {
+            position: absolute;
+            right: 3%;
+            font-size: 0.3rem;
+            color: #fff;
+            background-color: #d05a63;
+            padding: 0.1rem 0.3rem;
+        }
+        .content li .footer {
+            position: relative;
+            height: 0.7rem;
+            margin-top: 0.2rem;
+            font-size: 0.24rem;
+        }
+        .content li .footer span {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 0rem 0.1rem
+        }
+        .work_layer .content li .footer em {
+            position: absolute;
+            right: 3%;
+            top: -70%;
+            font-size: 0.3rem;
+            color: #fff;
+            background-color: #d05a63;
+            padding: 0.1rem 0.3rem;
+        }
+        /*约单*/
+        .main_content li .top {
+            position: relative;
+            padding-top: 0.2rem;
+        }
+        .main_content li .top img {
+            width: 0.8rem;
+            min-height: 0.8rem;
+            max-height: 0.9rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        .main_content li .top em {
+            margin-left: 0.1rem;
+            font-size: 0.3rem;
+        }
+        .main_content li .top i {
+            position: absolute;
+            right: 3%;
+            top: 25%;
+            color: #999;
+        }
+        .main_content li .middle {
+            width: 100%;
+            margin-top: 0.1rem;
+        }
+        .main_content li .middle .img_box {
+            width: 32%;
+            height: 2rem;
+            display: inline-block;
+            background-color: #333;
+            position: relative;
+        }
+        .main_content li .middle img {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .main_content li p {
+            font-size: 0.3rem;
+            color: #957457;
+            padding-bottom: 0.2rem;
+        }
+        .main_content li h4 {
+            overflow: hidden;
+            display: -webkit-box;
+            line-height: 0.4rem;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-break: break-all;
+            font-size: 0.24rem;
+            padding-bottom: 0rem;
+            margin-bottom: 0.2rem;
+        }
+        .main_content .down {
+            width: 100%;
+            height: 0.87rem;
+            line-height: 0.87rem;
+            border-top: 2px solid #eee;
+        }
+        .main_content .down ul li {
+            width: 33%;
+            float: right;
+        }
+        .main_content .down ul li:nth-of-type(1) button {
+            display: inline-block;
+            color: #fff;
+            margin-top: 0.1rem;
+            background-color: #c65760;
+            padding: 0 0.3rem;
+            border-radius: 20px;
+        }
+        .main_content .down ul li em {
+            width: 0.5rem;
+            height: 0.8rem;
+            vertical-align: middle;
+            display: inline-block;
+            background: url(../img/eyes.png) no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+        }
+        .main_content .down ul li:nth-of-type(1) em {
+            background-image: url("../img/group_friends_write.png");
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="layer">
+        <header>
+            <em onclick="back()"></em>
+            <input type="text" placeholder="搜索职位" class="search_job"/>
+        <del class="search">搜索</del>
+        </header>
+
+    <div class="guild">
+        <h5>热门搜索</h5>
+        <div class="place_ac clearfix" id="place_ac">
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">服务员</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">临时工</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">全国可报名</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">在家可做</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">客服</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">便利店</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">周末</button></div>
+            <div class="btnout"><button type="button" class="mui-btn mui-btn-outlined">小时工</button></div>
+
+        </div>
+    </div>
+    <div class="content main_content">
+        <ul>
+           <!--填充-->
+
+            <!--约单-->
+           <!-- <li>
+                <div class="top">
+                      <span onclick="location.href='./other_information.html'">
+                          <img src="http://39.104.127.252:80/group1/M00/00/03/rBhwr1ubghiAKAQ4AAEUEtKnjHQ759.png" alt="">
+                        <em>休息</em>
+                      </span>
+                    <i>&lt;!&ndash;0.2km. &ndash;&gt;9-13 下午3:09 </i>
+                </div>
+
+                <div class="middle" onclick="location.href='./work_job_single.html?partnerId=209'">
+
+                    <div class="img_box">
+                        <img src="http://39.104.127.252:80/group1/M00/00/03/rBhwr1uaDTiAZ0DOAAbj77sGtQY191.png" alt="" data-preview-src="" data-preview-group="0">
+                    </div>
+
+                    <p>社交</p>
+                    <h4>委屈点撒广东省功夫大使馆的说法</h4>
+                </div>
+                <div class="down">
+                    <ul class="clearfix">
+
+                        <li onclick="location.href='./work_job_single.html?partnerId=209'">
+                            <button>
+                                <em></em>
+                                <span>约单</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </li>-->
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/x_rem.js"></script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/back.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.indexedlist.js"></script>
+<script src="../js/template-web.js"></script>
+<script src="../js/template.js"></script>
+<script id="search" type="text/html">
+    <!--兼职-->
+    {{if list.length==0}}
+    <li>暂时没有符合您条件的职位</li>
+    {{else}}
+    {{each list as value i}}
+    <li onclick="location.href='./work_job_detail.html?stationId={{value.stationId}}'">
+        <div class="header">
+            <span>{{value.title}}</span>
+            <i>{{value.price}}元/天</i>
+        </div>
+        <div class="center">
+            <em><i></i>{{value.businessman.address}}</em>&nbsp;&nbsp;&nbsp;&nbsp;
+            {{if value.startTime==null}}
+            <del><s></s>06.20~06.25</del>
+            {{else}}
+            <del><s></s>{{time(value.startTime)}}~{{time(value.endTime)}}</del>
+            {{/if}}
+        </div>
+        <div class="footer">
+            <span>{{value.payType}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <em onclick="location.href='./work_job_detail.html?stationId={{value.stationId}}'">报名</em>
+        </div>
+    </li>
+    {{/each}}
+    {{/if}}
+
+</script>
+
+<script>
+    $(function(){
+        $(".btnout").click(function(){
+            var text=$(this).text();
+            $(".search_job").val(text);
+        })
+        //点击搜索
+        $(".search_job").keyup(function(){
+           var content= $(".search_job").val();
+            $(".guild").hide();
+            console.log(content);
+            if(content!==""){
+                findStationBySearch(content);
+            }else{
+                alert("不能搜索空内容");
+            }
+
+        })
+        $(".search").click(function(){
+            var content= $(".search_job").val();
+            $(".guild").hide();
+            console.log(content);
+            findStationBySearch(content);
+        })
+        // /station/findStationBySearch key
+        function findStationBySearch(content){
+            $.ajax({
+                //处理session每次不唯一问题
+                xhrFields: {
+                    withCredentials: true
+                },
+                async:false,
+                type: "post",
+                url: baseUrl+"/station/findStationBySearch",
+                data:{
+                    key:content
+                },
+                dataType: 'json',
+                success:function(data) {
+                    console.log(data);
+                    template.helper("time",function(date){
+                        var time=new Date(date).toLocaleString().replace(/:\d{1,2}$/,' ').substr(5,11).replace("/","-");
+                        return time;
+                        /* return new Date(parseInt(date) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');*/
+                    });
+                    $(".content").html(template("search",data));
+                }
+
+            })
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <title>查看评价</title>
+    <link rel="stylesheet" href="../css/mui.min.css"/>
+    <link rel="stylesheet" href="../css/mui_img.css"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/local_market_goodlist_detail.css">
+    <style>
+        .layer>header{
+            position: fixed;
+            top: 0%;
+
+        }
+        .layer>header>h3{
+            line-height: 1rem;
+        }
+        header>del{
+            position: absolute;
+            left: 3%;
+            width: 0.6rem;
+            height: 1rem;
+            background:url("../img/left.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+        }
+        .main_content{
+            padding-top:1.3rem;
+        }
+        .mui-slider .mui-slider-group .mui-slider-item img{
+            position: absolute;
+            top:0%;
+        }
+        .goods_comment_list{
+            border-bottom: 0.2rem solid #eeeeee;
+        }
+        .goods_comment_list:last-of-type{
+            border-bottom: none;
+        }
+        .p_info .img_box{
+            margin-top: 0.2rem;
+            width: 33%;
+            height: 2.5rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            background-color: #333;
+        }
+        .p_info .img_box img{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+<div class="layer">
+    <header class="clearfix">
+        <del onclick="back()"></del>
+        <h3>评价</h3>
+    </header>
+    <div class="main_content">
+
+       <!-- <div class="goods_comment_list">
+            <div class="goods_list_header">
+                <img src="../img/focus-img1.png" alt="">
+                <em>时***</em>
+                <del>8月27日  17:11</del>
+            </div>
+            <div class="p_info">
+                <p>宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！</p>
+                <img src="../img/focus-img1.png" alt="" data-preview-src="" data-preview-group="2">
+            </div>
+        </div>
+        <div class="goods_comment_list">
+            <div class="goods_list_header">
+                <img src="../img/focus-img1.png" alt="">
+                <em>时***</em>
+                <del>8月27日  17:11</del>
+            </div>
+            <div class="p_info">
+                <p>宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！宝贝很好呢，我很喜欢，下次还会加购哦！</p>
+                <img src="../img/focus-img1.png" alt="" data-preview-src="" data-preview-group="2">
+            </div>
+        </div>-->
+    </div>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.zoom.js"></script>
+<script src="../js/mui.preview.js"></script>
+<script src="../js/x_rem.js"></script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/back.js"></script>
+<script src="../js/template-web.js"></script>
+<script src="../js/template.js"></script>
+<script id="goodList_detail_comment" type="text/html">
+{{each Comment as value i}}
+<div class="goods_comment_list">
+    <div class="goods_list_header">
+        <img src="{{value.toUser.avatar}}" alt="">&nbsp;&nbsp;
+        <em>{{value.toUser.userName.substr(0,1)}}***</em>
+        <del>{{time(value.time)}}</del>
+    </div>
+    <div class="p_info">
+        <p>{{value.body}}</p>
+        {{if value.img==null}}
+
+        {{else}}
+        {{each str(value.img) as img j }}
+        <div class="img_box">
+            <img src="{{img}}" alt="" data-preview-src="" data-preview-group="i"/>
+        </div>
+        {{/each}}
+        {{/if}}
+
+    </div>
+</div>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        mui.previewImage();
+        var goodsId=location.href.split("=")[1];
+        //console.log(goodsId);
+        render()
+        function render() {
+            $.ajax({
+                //处理session每次不唯一问题
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "post",
+                async: false,
+                url: baseUrl + "/goods/getOneGoods",
+                data: {
+                    goodsId: goodsId
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.state == true) {
+                        template.helper("time", function (date) {
+                            var time = new Date(date).toLocaleString().replace(/:\d{1,2}$/, ' ').substr(5, 11).replace("/", "-");
+                            return time;
+                            /* return new Date(parseInt(date) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');*/
+                        });
+                        template.helper("str", function (str) {
+                            return str.split(",");
+                        });
+                        var html = template("goodList_detail_comment", data);
+                        $(".main_content").html(html);
+                    }
+                }
+            })
+        }
+    })
+</script>
+</html>
